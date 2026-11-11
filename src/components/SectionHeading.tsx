@@ -1,7 +1,7 @@
 export function SectionHeading({
   index, eyebrow, title, description,
 }: { index: string; eyebrow: string; title: string; description?: string }) {
-  const lines = title.split("\\n");
+  const lines = title.split(/\\n|\n/);
   return (
     <div className="section-heading">
       <span className="section-index">{index} /</span>

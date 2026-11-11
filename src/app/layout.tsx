@@ -1,12 +1,45 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Caveat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { FixedRail } from "@/components/FixedRail";
 import { Navbar } from "@/components/Navbar";
+import { CustomCursor } from "@/components/CustomCursor";
 
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const caveat = Caveat({ subsets: ["latin"], variable: "--font-hand", display: "swap" });
+const switzer = localFont({
+  src: [
+    {
+      path: "./fonts/Switzer-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Switzer-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Switzer-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Switzer-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const caveat = localFont({
+  src: "./fonts/Caveat.woff2",
+  weight: "600",
+  style: "normal",
+  variable: "--font-hand",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Md Arif Ansari | Software Engineer",
@@ -30,8 +63,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${manrope.variable} ${caveat.variable}`}>
+      <body className={`${switzer.variable} ${caveat.variable}`}>
         <ThemeProvider>
+          <CustomCursor />
           <Navbar />
           <FixedRail />
           {children}
