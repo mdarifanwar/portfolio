@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { LiveClock } from "./LiveClock";
 
 const links = [
-  { label: "About", href: "/#about" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
 ];
 
 function BubbleDots({ isOpen }: { isOpen: boolean }) {
@@ -82,6 +83,7 @@ function BubbleDots({ isOpen }: { isOpen: boolean }) {
 }
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
@@ -104,6 +106,9 @@ export function Navbar() {
     setHoveredKey(null);
   };
 
+  // On dedicated /contact page, hide the pill navbar since it has its own top-bar close button
+  if (pathname === "/contact") return null;
+
   return (
     <header className="pill-navbar-container">
       <div className="pill-top-bar">
@@ -118,9 +123,9 @@ export function Navbar() {
           layout
           transition={{ type: "spring", stiffness: 380, damping: 30, mass: 0.55 }}
         >
-          <Link href="/" className="pill-logo" aria-label="Md Arif Ansari home" onClick={closeAll}>
+          <a href="#top" className="pill-logo" aria-label="Md Arif Ansari home" onClick={closeAll}>
             arif<span className="pill-logo-dot">.</span>
-          </Link>
+          </a>
 
           {/* When at top: show desktop links */}
           {!scrolled && (
@@ -128,7 +133,7 @@ export function Navbar() {
               {links.map((link) => {
                 const isItemHovered = hoveredKey === link.href;
                 return (
-                  <Link
+                  <a
                     key={link.href}
                     href={link.href}
                     onClick={closeAll}
@@ -143,17 +148,17 @@ export function Navbar() {
                       />
                     )}
                     <span className="pill-nav-label">{link.label}</span>
-                  </Link>
+                  </a>
                 );
               })}
 
               <Link
                 href="/contact"
                 onClick={closeAll}
-                onMouseEnter={() => setHoveredKey("/contact")}
+                onMouseEnter={() => setHoveredKey("#contact")}
                 className="pill-contact-btn"
               >
-                {hoveredKey === "/contact" && (
+                {hoveredKey === "#contact" && (
                   <motion.span
                     layoutId="nav-bubble"
                     className="pill-nav-bubble pill-nav-bubble-contact"
@@ -200,9 +205,9 @@ export function Navbar() {
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
             {links.map((link) => (
-              <Link key={link.href} href={link.href} onClick={closeAll}>
+              <a key={link.href} href={link.href} onClick={closeAll}>
                 {link.label}
-              </Link>
+              </a>
             ))}
             <Link
               href="/contact"

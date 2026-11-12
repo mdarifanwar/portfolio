@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { 
   ArrowUpRight, 
@@ -11,11 +12,15 @@ import {
   Server, 
   Database, 
   Layers,
-  ArrowRight
+  ArrowRight,
+  Terminal,
+  Compass,
+  Monitor,
+  BookOpen
 } from "lucide-react";
 import { projects, skills } from "@/data/projects";
 import { site } from "@/data/site";
-import { useContactModal } from "@/context/ContactModalContext";
+import { TextReveal } from "./TextReveal";
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 32 },
@@ -37,8 +42,6 @@ const staggerContainer: Variants = {
 };
 
 export function PortfolioContent() {
-  const { openContact } = useContactModal();
-
   return (
     <main className="content aathif-theme">
       {/* Subtle Architectural Grid Lines */}
@@ -56,7 +59,7 @@ export function PortfolioContent() {
       <section id="top" className="aathif-hero">
         <motion.div 
           className="hero-headline-wrap"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 35 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -68,7 +71,7 @@ export function PortfolioContent() {
           className="hero-meta-strip"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="meta-card">
             <div className="meta-icon-badge green">
@@ -110,20 +113,22 @@ export function PortfolioContent() {
           <span className="kicker-tag">THREE PHASES</span>
         </div>
 
-        <motion.div 
-          className="approach-intro"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={reveal}
-        >
-          <h2 className="approach-big-title">
-            I&apos;M MD ARIF ANSARI BASED IN INDIA.
-          </h2>
-          <p className="approach-sub-text">
-            I employ software engineering skills to build scalable, high-performance, and reliable web applications.
-          </p>
-        </motion.div>
+        <div className="approach-intro">
+          {/* Animated Text Reveal for Big Title */}
+          <TextReveal 
+            text="I'M MD ARIF ANSARI BASED IN INDIA."
+            as="h2"
+            className="approach-big-title"
+            stagger={0.04}
+          />
+          <TextReveal
+            text="I employ software engineering skills to build scalable, high-performance, and reliable web applications."
+            as="p"
+            className="approach-sub-text"
+            delay={0.2}
+            stagger={0.02}
+          />
+        </div>
 
         {/* 3 Phases Grid */}
         <motion.div 
@@ -215,7 +220,13 @@ export function PortfolioContent() {
               transition={{ delay: idx * 0.08 }}
             >
               {/* Project Visual Canvas */}
-              <div className={`project-canvas canvas-${idx + 1}`}>
+              <a 
+                href={project.github || site.github}
+                target="_blank"
+                rel="noreferrer"
+                className={`project-canvas canvas-${idx + 1}`}
+                aria-label={`View ${project.title}`}
+              >
                 <div className="project-dots-row">
                   <span className="canvas-dot active" />
                   <span className="canvas-dot" />
@@ -239,18 +250,7 @@ export function PortfolioContent() {
                     ))}
                   </div>
                 </div>
-
-                <a 
-                  href={project.github || site.github} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="project-hover-pill"
-                  aria-label={`View ${project.title} on GitHub`}
-                >
-                  <span>VIEW</span>
-                  <ArrowUpRight size={15} />
-                </a>
-              </div>
+              </a>
 
               {/* Project Card Bottom Info */}
               <div className="project-bottom-meta">
@@ -281,33 +281,81 @@ export function PortfolioContent() {
           <span className="kicker-tag">PHILOSOPHY</span>
         </div>
 
-        <motion.div 
-          className="philosophy-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={reveal}
-        >
-          <blockquote className="philosophy-quote">
-            &ldquo;AN INDIA–BASED SOFTWARE ENGINEER, SPECIALIZING IN HELPING BUSINESSES AND INDIVIDUALS TURN THEIR AMBITIOUS IDEAS INTO IMPACTFUL DIGITAL PRODUCTS AND SOFTWARE SOLUTIONS.&rdquo;
-          </blockquote>
-
-          {/* Stat Pillars */}
-          <div className="philosophy-stats-grid">
-            <div className="stat-pillar">
-              <span className="stat-number">3+</span>
-              <span className="stat-label">YEARS DEV EXPERIENCE</span>
+        {/* Ambient Floating Cards matching Aathif Zahir's signature visuals */}
+        <div className="philosophy-ambient-container" aria-hidden="true">
+          {/* Ambient Card 1: Code Matrix / Terminal */}
+          <div className="ambient-card ambient-card-1">
+            <div className="ambient-header">
+              <Terminal size={14} className="ambient-icon" />
+              <span>TERMINAL</span>
             </div>
-            <div className="stat-pillar">
-              <span className="stat-number">15+</span>
-              <span className="stat-label">PROJECTS & REPOSITORIES</span>
-            </div>
-            <div className="stat-pillar">
-              <span className="stat-number">100%</span>
-              <span className="stat-label">CODE INTENTION & PASSION</span>
+            <div className="ambient-code-lines">
+              <span>&gt; git commit -m &quot;feat: scalable core&quot;</span>
+              <span>&gt; deploy status: active [99.9%]</span>
             </div>
           </div>
-        </motion.div>
+
+          {/* Ambient Card 2: Exploration / Sea Horizon */}
+          <div className="ambient-card ambient-card-2">
+            <div className="ambient-horizon-gradient">
+              <Compass size={18} className="horizon-icon" />
+              <span className="horizon-tag">EXPLORATION</span>
+            </div>
+          </div>
+
+          {/* Ambient Card 3: Focus / Deep Work */}
+          <div className="ambient-card ambient-card-3">
+            <div className="ambient-header">
+              <Monitor size={14} className="ambient-icon" />
+              <span>DEV ENVIRONMENT</span>
+            </div>
+            <div className="ambient-stats">
+              <strong>15+ REPOS</strong>
+              <small>JAVA &middot; SPRING &middot; REACT</small>
+            </div>
+          </div>
+
+          {/* Ambient Card 4: Learning & Curiosity */}
+          <div className="ambient-card ambient-card-4">
+            <div className="ambient-header">
+              <BookOpen size={14} className="ambient-icon" />
+              <span>PASSION</span>
+            </div>
+            <div className="ambient-book-tag">CONTINUOUS LEARNING</div>
+          </div>
+        </div>
+
+        <div className="philosophy-center">
+          {/* Animated Reveal for Philosophy Statement */}
+          <TextReveal
+            text="AN INDIA–BASED SOFTWARE ENGINEER, SPECIALIZING IN HELPING BUSINESSES AND INDIVIDUALS TURN THEIR AMBITIOUS IDEAS INTO IMPACTFUL DIGITAL PRODUCTS AND SOFTWARE SOLUTIONS."
+            as="blockquote"
+            className="philosophy-quote"
+            stagger={0.03}
+          />
+
+          {/* Stat Pillars */}
+          <motion.div 
+            className="philosophy-stats-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={reveal} className="stat-pillar">
+              <span className="stat-number">3+</span>
+              <span className="stat-label">YEARS DEV EXPERIENCE</span>
+            </motion.div>
+            <motion.div variants={reveal} className="stat-pillar">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">PROJECTS & REPOSITORIES</span>
+            </motion.div>
+            <motion.div variants={reveal} className="stat-pillar">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">CODE INTENTION & PASSION</span>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* 04 // Tech Stack & Toolkit */}
@@ -360,16 +408,20 @@ export function PortfolioContent() {
 
         <div className="contact-editorial-box">
           <p className="contact-cta-eyebrow">HAVE A PROJECT OR OPPORTUNITY IN MIND?</p>
-          <h2 className="contact-cta-heading">LET&apos;S MAKE SOMETHING EXTRAORDINARY.</h2>
+          <TextReveal 
+            text="LET'S MAKE SOMETHING EXTRAORDINARY."
+            as="h2"
+            className="contact-cta-heading"
+            stagger={0.04}
+          />
           <div className="contact-action-row">
-            <button 
-              type="button" 
-              onClick={openContact} 
+            <Link 
+              href="/contact"
               className="contact-mail-pill"
             >
               <span>{site.email}</span>
               <ArrowUpRight size={18} />
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -380,24 +432,6 @@ export function PortfolioContent() {
           <p className="footer-bio-lead">
             BASED IN INDIA, I AM AN INNOVATIVE SOFTWARE ENGINEER. MY PASSION FOR BUILDING SCALABLE APPLICATIONS, CLEAN SYSTEM ARCHITECTURE, AND INTUITIVE DIGITAL EXPERIENCES IS EVIDENT IN MY WORK.
           </p>
-          <div className="footer-social-links">
-            <a href={site.linkedin} target="_blank" rel="noreferrer">
-              <span>LINKEDIN</span>
-              <ArrowUpRight size={13} />
-            </a>
-            <a href={site.github} target="_blank" rel="noreferrer">
-              <span>GITHUB</span>
-              <ArrowUpRight size={13} />
-            </a>
-            <button 
-              type="button" 
-              onClick={openContact}
-              className="footer-email-link"
-            >
-              <span>EMAIL</span>
-              <ArrowUpRight size={13} />
-            </button>
-          </div>
         </div>
 
         {/* Massive Name Typography across the base */}
