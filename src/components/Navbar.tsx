@@ -197,26 +197,36 @@ export function Navbar() {
       {/* Mobile / Compact dropdown menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            className="pill-mobile-dropdown"
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            transition={{ duration: 0.18, ease: "easeOut" }}
-          >
-            {links.map((link) => (
-              <a key={link.href} href={link.href} onClick={closeAll}>
-                {link.label}
-              </a>
-            ))}
-            <Link
-              href="/contact"
-              className="pill-mobile-contact"
+          <>
+            <motion.div
+              className="pill-dropdown-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={closeAll}
+              aria-hidden="true"
+            />
+            <motion.div
+              className="pill-mobile-dropdown"
+              initial={{ opacity: 0, y: -8, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.96 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
-              Contact
-            </Link>
-          </motion.div>
+              {links.map((link) => (
+                <a key={link.href} href={link.href} onClick={closeAll}>
+                  {link.label}
+                </a>
+              ))}
+              <Link
+                href="/contact"
+                className="pill-mobile-contact"
+                onClick={closeAll}
+              >
+                Contact
+              </Link>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

@@ -62,7 +62,7 @@ export function TextReveal({
         className={`text-reveal-container ${className}`}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.08 }}
         variants={{
           hidden: { opacity: 0 },
           visible: {
@@ -95,7 +95,7 @@ export function TextReveal({
       className={`text-reveal-container ${className}`}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.08 }}
       variants={{
         hidden: { opacity: 0 },
         visible: {
