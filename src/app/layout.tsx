@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ContactModalProvider } from "@/context/ContactModalContext";
+import { ContactModal } from "@/components/ContactModal";
 import { FixedRail } from "@/components/FixedRail";
 import { Navbar } from "@/components/Navbar";
 import { CustomCursor } from "@/components/CustomCursor";
@@ -65,10 +67,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <body className={`${switzer.variable} ${caveat.variable}`}>
         <ThemeProvider>
-          <CustomCursor />
-          <Navbar />
-          <FixedRail />
-          {children}
+          <ContactModalProvider>
+            <CustomCursor />
+            <Navbar />
+            <FixedRail />
+            <ContactModal />
+            {children}
+          </ContactModalProvider>
         </ThemeProvider>
       </body>
     </html>

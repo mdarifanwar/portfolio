@@ -3,6 +3,7 @@ export const site = {
   shortName: "Arif",
   role: "Software Engineer · Full-Stack Developer",
   location: "India",
+  phone: "+91 9852115086",
   email: "mdarifansari.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/md-arif1",
   github: "https://github.com/mdarifanwar",

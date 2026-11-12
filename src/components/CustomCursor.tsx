@@ -35,8 +35,9 @@ export function CustomCursor() {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       if (!target) return;
+      // Do NOT trigger on the whole pill navbar container so the bubble cursor can glide smoothly across the bar
       const interactive = target.closest(
-        'a, button, input, textarea, select, [role="button"], .project-card, .skill-card, .pill-navbar, .pill-dots-btn, .pill-contact-btn, .pill-logo, .theme-toggle'
+        'a, button, input, textarea, select, [role="button"], .project-card, .skill-card, .pill-dots-btn, .pill-contact-btn, .pill-logo, .theme-toggle'
       );
       setIsHovered(!!interactive);
     };
@@ -70,10 +71,10 @@ export function CustomCursor() {
       style={{
         x: cursorX,
         y: cursorY,
-        opacity: isVisible ? (isHovered ? 0.85 : 0.95) : 0,
+        opacity: isVisible ? (isHovered ? 0.9 : 0.95) : 0,
       }}
       animate={{
-        scale: isClicked ? 0.75 : isHovered ? 1.7 : 1,
+        scale: isClicked ? 0.7 : isHovered ? 1.4 : 1,
       }}
       transition={{ duration: 0.16, ease: "easeOut" }}
     />

@@ -1,101 +1,415 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight, Sparkles } from "lucide-react";
+import { 
+  ArrowUpRight, 
+  MapPin, 
+  Globe, 
+  ShieldCheck, 
+  Sparkles, 
+  Code2, 
+  Server, 
+  Database, 
+  Layers,
+  ArrowRight
+} from "lucide-react";
 import { projects, skills } from "@/data/projects";
 import { site } from "@/data/site";
-import { SectionHeading } from "./SectionHeading";
+import { useContactModal } from "@/context/ContactModalContext";
 
 const reveal: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 32 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } 
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
 };
 
 export function PortfolioContent() {
+  const { openContact } = useContactModal();
+
   return (
-    <main className="content">
-      <NavbarSpacer />
-      <section className="hero-section">
-        <div className="hero-orbit orbit-one" />
-        <div className="hero-orbit orbit-two" />
-        <motion.div className="hero-copy" initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <motion.p variants={reveal} className="eyebrow"><span className="status-dot" /> AVAILABLE FOR OPPORTUNITIES</motion.p>
-          <motion.h1 variants={reveal}>Building useful<br /><em>digital experiences.</em></motion.h1>
-          <motion.p variants={reveal} className="hero-description">{site.intro}</motion.p>
-          <motion.div variants={reveal} className="hero-actions">
-            <a className="button button-primary" href="#projects">Explore projects <ArrowDownRight size={17} /></a>
-            <a className="button button-quiet" href="#contact">Get in touch <ArrowUpRight size={16} /></a>
-          </motion.div>
+    <main className="content aathif-theme">
+      {/* Subtle Architectural Grid Lines */}
+      <div className="aathif-grid-lines" aria-hidden="true">
+        <div className="grid-col" />
+        <div className="grid-col" />
+        <div className="grid-col" />
+        <div className="grid-col" />
+      </div>
+
+      {/* Top Border Guide Line */}
+      <div className="aathif-top-divider" aria-hidden="true" />
+
+      {/* Hero Section */}
+      <section id="top" className="aathif-hero">
+        <motion.div 
+          className="hero-headline-wrap"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className="hero-massive-name">ARIF</h1>
         </motion.div>
-        <div className="hero-aside"><span>01</span><span className="aside-line" /><span>SCROLL TO DISCOVER</span></div>
-        <div className="hero-bottom-meta"><span>JAVA · REACT · SPRING BOOT</span><span>BASED IN INDIA</span></div>
+
+        {/* Hero 3-Col Meta Strip */}
+        <motion.div 
+          className="hero-meta-strip"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="meta-card">
+            <div className="meta-icon-badge green">
+              <MapPin size={15} />
+            </div>
+            <div className="meta-info">
+              <span className="meta-sub">LOCATION</span>
+              <strong className="meta-val">BASED IN INDIA</strong>
+            </div>
+          </div>
+
+          <div className="meta-card">
+            <div className="meta-icon-badge white">
+              <Globe size={15} />
+            </div>
+            <div className="meta-info">
+              <span className="meta-sub">AVAILABILITY</span>
+              <strong className="meta-val">AVAILABLE WORLDWIDE</strong>
+            </div>
+          </div>
+
+          <div className="meta-card">
+            <div className="meta-icon-badge blue">
+              <ShieldCheck size={15} />
+            </div>
+            <div className="meta-info">
+              <span className="meta-sub">DISCIPLINE</span>
+              <strong className="meta-val">SOFTWARE ENGINEER</strong>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      <section id="about" className="section about-section">
-        <SectionHeading index="01" eyebrow="A LITTLE ABOUT ME" title={"Curious by nature.\\nBuilder by choice."} description="A quick introduction to the person behind the code." />
-        <motion.div className="about-layout" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-          <motion.p variants={reveal} className="about-lead">{site.about}</motion.p>
-          <motion.div variants={reveal} className="about-facts">
-            <div><span>FOCUS</span><strong>Full-stack development</strong></div>
-            <div><span>EDUCATION</span><strong>B.Tech · Computer Science</strong></div>
-            <div><span>GRADUATION</span><strong>2027</strong></div>
-            <div><span>APPROACH</span><strong>Learn · Build · Improve</strong></div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <section id="skills" className="section skills-section">
-        <SectionHeading index="02" eyebrow="MY TOOLKIT" title={"Tools I use to\\nbring ideas to life."} description="A growing set of technologies across product development." />
-        <div className="skills-grid">
-          {skills.map((group, i) => (
-            <motion.article className="skill-card" key={group.group} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={reveal} transition={{ delay: i * 0.06 }}>
-              <span className="skill-number">0{i + 1}</span>
-              <h3>{group.group}</h3>
-              <div className="skill-tags">{group.items.map((item) => <span key={item}>{item}</span>)}</div>
-            </motion.article>
-          ))}
+      {/* 01 // Approach Section */}
+      <section id="about" className="aathif-section approach-section">
+        <div className="section-kicker-bar">
+          <span className="kicker-index">01</span>
+          <span className="kicker-title">{"// APPROACH"}</span>
+          <span className="kicker-tag">THREE PHASES</span>
         </div>
-      </section>
 
-      <section id="projects" className="section projects-section">
-        <SectionHeading index="03" eyebrow="SELECTED WORK" title={"Projects with\\npurpose."} description="A selection of things I have been building and exploring." />
-        <div className="projects-list">
-          {projects.map((project) => (
-            <motion.article className="project-card" key={project.number} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal}>
-              <div className="project-number">{project.number}</div>
-              <div className="project-main">
-                <p className="eyebrow">{project.category}</p>
-                <h3>{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-stack">{project.stack.map((item) => <span key={item}>{item}</span>)}</div>
+        <motion.div 
+          className="approach-intro"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={reveal}
+        >
+          <h2 className="approach-big-title">
+            I&apos;M MD ARIF ANSARI BASED IN INDIA.
+          </h2>
+          <p className="approach-sub-text">
+            I employ software engineering skills to build scalable, high-performance, and reliable web applications.
+          </p>
+        </motion.div>
+
+        {/* 3 Phases Grid */}
+        <motion.div 
+          className="approach-phases-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={staggerContainer}
+        >
+          <motion.div variants={reveal} className="phase-card">
+            <div className="phase-card-top">
+              <div className="phase-indicators">
+                <span className="phase-dot active" />
+                <span className="phase-dot" />
+                <span className="phase-dot" />
               </div>
-              <a className="project-link" href={project.github} target="_blank" rel="noreferrer" aria-label={`View ${project.title} source on GitHub`}><ArrowUpRight size={22} /></a>
+              <span className="phase-number">01</span>
+            </div>
+            <h3 className="phase-title">DISCOVER AND ANALYSE</h3>
+            <p className="phase-desc">
+              Deconstruct problem spaces, understand requirements, evaluate algorithmic complexity, and architect clean roadmap strategies.
+            </p>
+            <div className="phase-tags">
+              <span>System Design</span>
+              <span>Requirements</span>
+              <span>Architecture</span>
+            </div>
+          </motion.div>
+
+          <motion.div variants={reveal} className="phase-card">
+            <div className="phase-card-top">
+              <div className="phase-indicators">
+                <span className="phase-dot" />
+                <span className="phase-dot active" />
+                <span className="phase-dot" />
+              </div>
+              <span className="phase-number">02</span>
+            </div>
+            <h3 className="phase-title">DESIGN AND IMPLEMENT</h3>
+            <p className="phase-desc">
+              Engineer modular backend microservices with Java & Spring Boot, design normalized databases, and craft responsive React frontends.
+            </p>
+            <div className="phase-tags">
+              <span>Spring Boot</span>
+              <span>React & Next.js</span>
+              <span>REST APIs</span>
+            </div>
+          </motion.div>
+
+          <motion.div variants={reveal} className="phase-card">
+            <div className="phase-card-top">
+              <div className="phase-indicators">
+                <span className="phase-dot" />
+                <span className="phase-dot" />
+                <span className="phase-dot active" />
+              </div>
+              <span className="phase-number">03</span>
+            </div>
+            <h3 className="phase-title">DELIVER AND MONITOR</h3>
+            <p className="phase-desc">
+              Containerize services with Docker, optimize database queries for low latency, automate CI/CD testing, and ensure 99.9% reliability.
+            </p>
+            <div className="phase-tags">
+              <span>Docker & CI/CD</span>
+              <span>SQL Tuning</span>
+              <span>Monitoring</span>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* 02 // Selected Works (Projects) */}
+      <section id="projects" className="aathif-section projects-section">
+        <div className="section-kicker-bar">
+          <span className="kicker-index">02</span>
+          <span className="kicker-title">{"// SELECTED WORKS"}</span>
+          <span className="kicker-tag">PORTFOLIO</span>
+        </div>
+
+        <div className="projects-grid-modern">
+          {projects.map((project, idx) => (
+            <motion.article 
+              key={project.number}
+              className="modern-project-card"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={reveal}
+              transition={{ delay: idx * 0.08 }}
+            >
+              {/* Project Visual Canvas */}
+              <div className={`project-canvas canvas-${idx + 1}`}>
+                <div className="project-dots-row">
+                  <span className="canvas-dot active" />
+                  <span className="canvas-dot" />
+                  <span className="canvas-dot" />
+                  <span className="canvas-dot" />
+                </div>
+                
+                {/* Floating Mockup Card Visual */}
+                <div className="mockup-preview-box">
+                  <div className="mockup-header">
+                    <span className="mockup-pill-label">{project.category}</span>
+                    <span className="mockup-code-tag">v1.0</span>
+                  </div>
+                  <div className="mockup-body">
+                    <h4>{project.title}</h4>
+                    <p>{project.description}</p>
+                  </div>
+                  <div className="mockup-stack-row">
+                    {project.stack.slice(0, 3).map((s) => (
+                      <span key={s} className="mockup-tech">{s}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <a 
+                  href={project.github || site.github} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="project-hover-pill"
+                  aria-label={`View ${project.title} on GitHub`}
+                >
+                  <span>VIEW</span>
+                  <ArrowUpRight size={15} />
+                </a>
+              </div>
+
+              {/* Project Card Bottom Info */}
+              <div className="project-bottom-meta">
+                <div className="project-titles">
+                  <h3 className="project-name">{project.title}</h3>
+                  <span className="project-category">{project.category}</span>
+                </div>
+                <a 
+                  href={project.github || site.github} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="project-arrow-btn"
+                  aria-label={`Explore ${project.title}`}
+                >
+                  <ArrowRight size={18} />
+                </a>
+              </div>
             </motion.article>
           ))}
         </div>
       </section>
 
-      <section className="statement-section">
-        <Sparkles className="statement-spark" size={22} />
-        <p>Good software is built with <em>curiosity, clarity,</em> and care.</p>
+      {/* 03 // Who Am I / Philosophy */}
+      <section className="aathif-section philosophy-section">
+        <div className="section-kicker-bar">
+          <span className="kicker-index">03</span>
+          <span className="kicker-title">{"// WHO AM I"}</span>
+          <span className="kicker-tag">PHILOSOPHY</span>
+        </div>
+
+        <motion.div 
+          className="philosophy-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={reveal}
+        >
+          <blockquote className="philosophy-quote">
+            &ldquo;AN INDIA–BASED SOFTWARE ENGINEER, SPECIALIZING IN HELPING BUSINESSES AND INDIVIDUALS TURN THEIR AMBITIOUS IDEAS INTO IMPACTFUL DIGITAL PRODUCTS AND SOFTWARE SOLUTIONS.&rdquo;
+          </blockquote>
+
+          {/* Stat Pillars */}
+          <div className="philosophy-stats-grid">
+            <div className="stat-pillar">
+              <span className="stat-number">3+</span>
+              <span className="stat-label">YEARS DEV EXPERIENCE</span>
+            </div>
+            <div className="stat-pillar">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">PROJECTS & REPOSITORIES</span>
+            </div>
+            <div className="stat-pillar">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">CODE INTENTION & PASSION</span>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
-      <section id="contact" className="section contact-section">
-        <SectionHeading index="04" eyebrow="HAVE A PROJECT IN MIND?" title={"Let's make\\nsomething matter."} description="Open to internships, entry-level opportunities, and meaningful collaborations." />
-        <div className="contact-bottom">
-          <a className="contact-email" href={`mailto:${site.email}`}>{site.email} <ArrowUpRight size={22} /></a>
-          <div className="contact-note">Have an opportunity or just want to say hello? My inbox is open.</div>
+      {/* 04 // Tech Stack & Toolkit */}
+      <section id="skills" className="aathif-section skills-section">
+        <div className="section-kicker-bar">
+          <span className="kicker-index">04</span>
+          <span className="kicker-title">{"// TECH STACK"}</span>
+          <span className="kicker-tag">TOOLS & EXPERTISE</span>
+        </div>
+
+        <motion.div 
+          className="stack-cards-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={staggerContainer}
+        >
+          {skills.map((group, idx) => {
+            const icons = [Code2, Layers, Server, Database, Sparkles];
+            const Icon = icons[idx % icons.length];
+            return (
+              <motion.div key={group.group} variants={reveal} className="stack-group-card">
+                <div className="stack-card-header">
+                  <div className="stack-icon-wrap">
+                    <Icon size={18} />
+                  </div>
+                  <span className="stack-index">0{idx + 1}</span>
+                </div>
+                <h3 className="stack-group-title">{group.group}</h3>
+                <div className="stack-pills-list">
+                  {group.items.map((item) => (
+                    <span key={item} className="stack-pill-item">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </section>
+
+      {/* 05 // Contact & Call to Action */}
+      <section id="contact" className="aathif-section contact-section">
+        <div className="section-kicker-bar">
+          <span className="kicker-index">05</span>
+          <span className="kicker-title">{"// CONTACT NOW"}</span>
+          <span className="kicker-tag">GET IN TOUCH</span>
+        </div>
+
+        <div className="contact-editorial-box">
+          <p className="contact-cta-eyebrow">HAVE A PROJECT OR OPPORTUNITY IN MIND?</p>
+          <h2 className="contact-cta-heading">LET&apos;S MAKE SOMETHING EXTRAORDINARY.</h2>
+          <div className="contact-action-row">
+            <button 
+              type="button" 
+              onClick={openContact} 
+              className="contact-mail-pill"
+            >
+              <span>{site.email}</span>
+              <ArrowUpRight size={18} />
+            </button>
+          </div>
         </div>
       </section>
-      <footer className="footer">
-        <span>© {new Date().getFullYear()} MD ARIF ANSARI</span>
-        <span>DESIGNED & BUILT WITH INTENTION</span>
-        <a href="#top">BACK TO TOP ↑</a>
+
+      {/* Large Typographic Footer */}
+      <footer className="aathif-footer">
+        <div className="footer-top-row">
+          <p className="footer-bio-lead">
+            BASED IN INDIA, I AM AN INNOVATIVE SOFTWARE ENGINEER. MY PASSION FOR BUILDING SCALABLE APPLICATIONS, CLEAN SYSTEM ARCHITECTURE, AND INTUITIVE DIGITAL EXPERIENCES IS EVIDENT IN MY WORK.
+          </p>
+          <div className="footer-social-links">
+            <a href={site.linkedin} target="_blank" rel="noreferrer">
+              <span>LINKEDIN</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <a href={site.github} target="_blank" rel="noreferrer">
+              <span>GITHUB</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <button 
+              type="button" 
+              onClick={openContact}
+              className="footer-email-link"
+            >
+              <span>EMAIL</span>
+              <ArrowUpRight size={13} />
+            </button>
+          </div>
+        </div>
+
+        {/* Massive Name Typography across the base */}
+        <div className="footer-massive-name" aria-hidden="true">
+          <span>ARIF</span>
+        </div>
+
+        <div className="footer-bottom-bar">
+          <span>© {new Date().getFullYear()} MD ARIF ANSARI</span>
+          <a href="#top" className="back-to-top-btn">BACK TO TOP ↑</a>
+        </div>
       </footer>
     </main>
   );
-}
-
-function NavbarSpacer() {
-  return <div className="content-top-spacer" aria-hidden="true" />;
 }
