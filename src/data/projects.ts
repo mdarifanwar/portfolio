@@ -13,11 +13,12 @@ export const projects: Project[] = [
   {
     number: "01",
     title: "SkillXchange",
-    category: "Full-stack web application",
+    category: "Full-Stack MERN · Real-Time Collaboration",
     description:
-      "A peer-to-peer skill exchange platform concept where people can connect, share what they know, and learn skills from one another.",
-    stack: ["Java", "Spring Boot", "React", "MySQL", "JWT"],
-    github: "https://github.com/mdarifanwar",
+      "A full-stack MERN platform for peer-to-peer learning and mentorship, featuring real-time Socket.IO chat, video call support, Google OAuth authentication, and interactive skill matching.",
+    stack: ["React", "Node.js", "Express.js", "MongoDB", "Socket.IO", "Docker"],
+    github: "https://github.com/mdarifanwar/SkillXchange",
+    demo: "https://skill-xchange-gamma.vercel.app",
     featured: true,
   },
   {

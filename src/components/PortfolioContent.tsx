@@ -245,7 +245,7 @@ export function PortfolioContent() {
                     <p>{project.description}</p>
                   </div>
                   <div className="mockup-stack-row">
-                    {project.stack.slice(0, 3).map((s) => (
+                    {project.stack.slice(0, 4).map((s) => (
                       <span key={s} className="mockup-tech">{s}</span>
                     ))}
                   </div>
