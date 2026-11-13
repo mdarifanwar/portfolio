@@ -221,7 +221,7 @@ export function PortfolioContent() {
             >
               {/* Project Visual Canvas */}
               <a 
-                href={project.github || site.github}
+                href={project.demo || project.github || site.github}
                 target="_blank"
                 rel="noreferrer"
                 className={`project-canvas canvas-${idx + 1}`}
