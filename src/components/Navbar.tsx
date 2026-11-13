@@ -106,8 +106,8 @@ export function Navbar() {
     setHoveredKey(null);
   };
 
-  // On dedicated /contact page, hide the pill navbar since it has its own top-bar close button
-  if (pathname === "/contact") return null;
+  // On dedicated /contact or /projects/* pages, hide the pill navbar since they have their own dedicated top header
+  if (pathname === "/contact" || pathname?.startsWith("/projects/")) return null;
 
   return (
     <header className="pill-navbar-container">

@@ -220,12 +220,10 @@ export function PortfolioContent() {
               transition={{ delay: idx * 0.08 }}
             >
               {/* Project Visual Canvas */}
-              <a 
-                href={project.demo || project.github || site.github}
-                target="_blank"
-                rel="noreferrer"
+              <Link 
+                href={`/projects/${project.slug}`}
                 className={`project-canvas canvas-${idx + 1}`}
-                aria-label={`View ${project.title}`}
+                aria-label={`View ${project.title} case study`}
               >
                 <div className="project-dots-row">
                   <span className="canvas-dot active" />
@@ -250,23 +248,21 @@ export function PortfolioContent() {
                     ))}
                   </div>
                 </div>
-              </a>
+              </Link>
 
               {/* Project Card Bottom Info */}
               <div className="project-bottom-meta">
-                <div className="project-titles">
+                <Link href={`/projects/${project.slug}`} className="project-titles">
                   <h3 className="project-name">{project.title}</h3>
                   <span className="project-category">{project.category}</span>
-                </div>
-                <a 
-                  href={project.github || site.github} 
-                  target="_blank" 
-                  rel="noreferrer"
+                </Link>
+                <Link 
+                  href={`/projects/${project.slug}`}
                   className="project-arrow-btn"
-                  aria-label={`Explore ${project.title}`}
+                  aria-label={`View ${project.title} case study`}
                 >
                   <ArrowRight size={18} />
-                </a>
+                </Link>
               </div>
             </motion.article>
           ))}
