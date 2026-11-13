@@ -116,17 +116,17 @@ export function PortfolioContent() {
         <div className="approach-intro">
           {/* Animated Text Reveal for Big Title */}
           <TextReveal 
-            text="I'M MD ARIF ANSARI BASED IN INDIA."
+            text="TRANSFORMING COMPLEX PROBLEMS INTO SCALABLE, RESILIENT SOFTWARE."
             as="h2"
             className="approach-big-title"
-            stagger={0.04}
+            stagger={0.03}
           />
           <TextReveal
-            text="I employ software engineering skills to build scalable, high-performance, and reliable web applications."
+            text="Based in Bengaluru, I architect high-performance full-stack web applications and robust backend systems engineered for reliability, speed, and real-world impact."
             as="p"
             className="approach-sub-text"
             delay={0.2}
-            stagger={0.02}
+            stagger={0.015}
           />
         </div>
 
@@ -426,7 +426,7 @@ export function PortfolioContent() {
       <footer className="aathif-footer">
         <div className="footer-top-row">
           <p className="footer-bio-lead">
-            BASED IN INDIA, I AM AN INNOVATIVE SOFTWARE ENGINEER. MY PASSION FOR BUILDING SCALABLE APPLICATIONS, CLEAN SYSTEM ARCHITECTURE, AND INTUITIVE DIGITAL EXPERIENCES IS EVIDENT IN MY WORK.
+            BASED IN INDIA, BENGALURU, I AM AN INNOVATIVE SOFTWARE ENGINEER. MY PASSION FOR BUILDING SCALABLE APPLICATIONS, CLEAN SYSTEM ARCHITECTURE, AND INTUITIVE DIGITAL EXPERIENCES IS EVIDENT IN MY WORK.
           </p>
         </div>
 
