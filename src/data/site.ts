@@ -2,7 +2,7 @@ export const site = {
   name: "Md Arif Ansari",
   shortName: "Arif",
   role: "Software Engineer · Full-Stack Developer",
-  location: "India",
+  location: "India, Bengaluru",
   email: "mdarifansari.dev@gmail.com",
   phone: "+91 9204726733",
   phoneCountry: "IN",

@@ -79,7 +79,7 @@ export function PortfolioContent() {
             </div>
             <div className="meta-info">
               <span className="meta-sub">LOCATION</span>
-              <strong className="meta-val">BASED IN INDIA</strong>
+              <strong className="meta-val">INDIA, BENGALURU</strong>
             </div>
           </div>
 
