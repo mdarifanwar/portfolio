@@ -35,11 +35,22 @@ export const projects: Project[] = [
   {
     number: "03",
     title: "AI Revenue Recovery",
-    category: "Payments · AI · Backend",
+    category: "Fintech · AI & Payments · Razorpay Buildathon",
     description:
-      "A payment recovery platform concept designed to help identify failed payment journeys and coordinate recovery attempts with an AI-assisted service.",
-    stack: ["Java", "Spring Boot", "PostgreSQL", "Python", "FastAPI", "React"],
-    github: "https://github.com/mdarifanwar",
+      "An intelligent payment recovery platform built for the Razorpay AI Revenue Recovery Buildathon, featuring a Java Spring Boot backend, Python FastAPI AI microservice, PostgreSQL, and Razorpay webhook integration.",
+    stack: ["Spring Boot", "FastAPI", "React", "PostgreSQL", "Docker", "Razorpay"],
+    github: "https://github.com/mdarifanwar/RecoverAI",
+    demo: "https://recover-ai-lime.vercel.app",
+    featured: true,
+  },
+  {
+    number: "04",
+    title: "StaffOps API",
+    category: "Backend Web Service · Spring Boot & MySQL",
+    description:
+      "A production-grade RESTful Backend Web Service built with Java 17, Spring Boot 3, Spring Data JPA, and MySQL. Features full CRUD operations, dynamic filtering, 3-tier enterprise architecture, and automated JUnit 5 testing.",
+    stack: ["Java 17", "Spring Boot 3", "MySQL", "Spring Data JPA", "Hibernate", "JUnit 5", "Maven"],
+    github: "https://github.com/mdarifanwar/StaffOps-API",
     featured: true,
   },
 ];
@@ -49,5 +60,5 @@ export const skills = [
   { group: "Frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"] },
   { group: "Backend", items: ["Spring Boot", "ASP.NET Core", "Node.js", "Express", "REST APIs", "JWT"] },
   { group: "Databases", items: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"] },
-  { group: "Tools & Practices", items: ["Git", "GitHub", "xUnit", "Postman", "CI/CD", "OOP", "DSA"] },
+  { group: "Tools & Practices", items: ["Git", "GitHub", "Maven", "JUnit 5", "xUnit", "Docker", "Postman", "CI/CD", "OOP", "DSA"] },
 ];
