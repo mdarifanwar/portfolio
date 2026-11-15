@@ -402,13 +402,16 @@ export function PortfolioContent() {
         </div>
 
         <div className="contact-editorial-box">
-          <p className="contact-cta-eyebrow">HAVE A PROJECT OR OPPORTUNITY IN MIND?</p>
+          <p className="contact-cta-eyebrow">HAVE AN OPPORTUNITY OR PROJECT IN MIND?</p>
           <TextReveal 
-            text="LET'S MAKE SOMETHING EXTRAORDINARY."
+            text="LET'S BUILD SOMETHING EXTRAORDINARY."
             as="h2"
             className="contact-cta-heading"
-            stagger={0.04}
+            stagger={0.035}
           />
+          <p className="contact-cta-desc">
+            Open to full-time software engineering opportunities, internships, and high-impact technical collaborations. Let&apos;s connect and make it happen.
+          </p>
           <div className="contact-action-row">
             <Link 
               href="/contact"
@@ -417,6 +420,26 @@ export function PortfolioContent() {
               <span>{site.email}</span>
               <ArrowUpRight size={18} />
             </Link>
+            <a 
+              href={site.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-secondary-pill"
+            >
+              <span>CONNECT ON LINKEDIN</span>
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
+          <div className="contact-badges-row">
+            <span className="contact-badge-item">
+              <span className="status-dot-pulse" /> AVAILABLE FOR OPPORTUNITIES
+            </span>
+            <span className="contact-badge-item">
+              📍 BENGALURU, INDIA
+            </span>
+            <span className="contact-badge-item">
+              🎓 CLASS OF 2027
+            </span>
           </div>
         </div>
       </section>
