@@ -1160,6 +1160,8 @@ main.content {
   gap: 7px;
 }
 .stack-pill-item {
+  display: inline-flex;
+  align-items: center;
   font-size: 11px;
   font-weight: 600;
   padding: 5px 11px;
@@ -1167,11 +1169,24 @@ main.content {
   background: var(--surface-2);
   border: 1px solid var(--line);
   color: var(--muted);
-  transition: color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.stack-pill-item:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background-color: rgba(94, 234, 212, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .stack-group-card:hover .stack-pill-item {
   color: var(--text);
   border-color: rgba(255, 255, 255, 0.14);
+}
+.stack-group-card:hover .stack-pill-item:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
 
 /* 05 // Contact Section */

@@ -159,10 +159,72 @@ export const projects: Project[] = [
   },
 ];
 
-export const skills = [
-  { group: "Languages", items: ["Java", "C#", "TypeScript", "JavaScript", "Python", "SQL"] },
-  { group: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "HTML5 & CSS3", "Socket.io", "WebRTC"] },
-  { group: "Backend", items: ["ASP.NET Core", "Spring Boot", "Node.js", "Express.js", "REST APIs", "JWT & RBAC", "EF Core"] },
-  { group: "Databases", items: ["PostgreSQL", "MySQL", "SQL Server", "SQLite", "MongoDB"] },
-  { group: "Tools & DevOps", items: ["Docker", "GitHub Actions", "CI/CD", "Oracle Cloud (OCI)", "AWS", "Postman", "xUnit & JUnit", "LeetCode (190+)"] },
+export interface SkillItem {
+  name: string;
+  url: string;
+}
+
+export interface SkillCategory {
+  group: string;
+  items: SkillItem[];
+}
+
+export const skills: SkillCategory[] = [
+  {
+    group: "Languages",
+    items: [
+      { name: "Java", url: "https://dev.java/" },
+      { name: "C#", url: "https://learn.microsoft.com/en-us/dotnet/csharp/" },
+      { name: "TypeScript", url: "https://www.typescriptlang.org/" },
+      { name: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      { name: "Python", url: "https://www.python.org/" },
+      { name: "SQL", url: "https://www.w3schools.com/sql/" },
+    ],
+  },
+  {
+    group: "Frontend",
+    items: [
+      { name: "React.js", url: "https://react.dev/" },
+      { name: "Next.js", url: "https://nextjs.org/" },
+      { name: "Tailwind CSS", url: "https://tailwindcss.com/" },
+      { name: "HTML5 & CSS3", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+      { name: "Socket.io", url: "https://socket.io/" },
+      { name: "WebRTC", url: "https://webrtc.org/" },
+    ],
+  },
+  {
+    group: "Backend",
+    items: [
+      { name: "ASP.NET Core", url: "https://dotnet.microsoft.com/en-us/apps/aspnet" },
+      { name: "Spring Boot", url: "https://spring.io/projects/spring-boot" },
+      { name: "Node.js", url: "https://nodejs.org/" },
+      { name: "Express.js", url: "https://expressjs.com/" },
+      { name: "REST APIs", url: "https://restfulapi.net/" },
+      { name: "JWT & RBAC", url: "https://jwt.io/" },
+      { name: "EF Core", url: "https://learn.microsoft.com/en-us/ef/core/" },
+    ],
+  },
+  {
+    group: "Databases",
+    items: [
+      { name: "PostgreSQL", url: "https://www.postgresql.org/" },
+      { name: "MySQL", url: "https://www.mysql.com/" },
+      { name: "SQL Server", url: "https://www.microsoft.com/en-us/sql-server" },
+      { name: "SQLite", url: "https://www.sqlite.org/" },
+      { name: "MongoDB", url: "https://www.mongodb.com/" },
+    ],
+  },
+  {
+    group: "Tools & DevOps",
+    items: [
+      { name: "Docker", url: "https://www.docker.com/" },
+      { name: "GitHub Actions", url: "https://github.com/features/actions" },
+      { name: "CI/CD", url: "https://about.gitlab.com/topics/ci-cd/" },
+      { name: "Oracle Cloud (OCI)", url: "https://www.oracle.com/cloud/" },
+      { name: "AWS", url: "https://aws.amazon.com/" },
+      { name: "Postman", url: "https://www.postman.com/" },
+      { name: "xUnit & JUnit", url: "https://xunit.net/" },
+      { name: "LeetCode (190+)", url: "https://leetcode.com/" },
+    ],
+  },
 ];

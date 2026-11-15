@@ -343,7 +343,7 @@ export function PortfolioContent() {
             </motion.div>
             <motion.div variants={reveal} className="stat-pillar">
               <span className="stat-number">20+</span>
-              <span className="stat-label">PROJECTS & REPOSITORIES</span>
+              <span className="stat-label">REPOSITORIES</span>
             </motion.div>
             <motion.div variants={reveal} className="stat-pillar">
               <span className="stat-number">100%</span>
@@ -382,9 +382,17 @@ export function PortfolioContent() {
                 <h3 className="stack-group-title">{group.group}</h3>
                 <div className="stack-pills-list">
                   {group.items.map((item) => (
-                    <span key={item} className="stack-pill-item">
-                      {item}
-                    </span>
+                    <a
+                      key={item.name}
+                      href={item.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="stack-pill-item"
+                      title={`Open official ${item.name} documentation / website`}
+                      aria-label={`Official website of ${item.name}`}
+                    >
+                      <span>{item.name}</span>
+                    </a>
                   ))}
                 </div>
               </motion.div>
