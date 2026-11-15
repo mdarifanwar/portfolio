@@ -274,7 +274,6 @@ export function PortfolioContent() {
         <div className="section-kicker-bar">
           <span className="kicker-index">03</span>
           <span className="kicker-title">{"// WHO AM I"}</span>
-          <span className="kicker-tag">PHILOSOPHY</span>
         </div>
 
         {/* Ambient Floating Cards matching Aathif Zahir's signature visuals */}
@@ -286,8 +285,8 @@ export function PortfolioContent() {
               <span>TERMINAL</span>
             </div>
             <div className="ambient-code-lines">
-              <span>&gt; git commit -m &quot;feat: scalable core&quot;</span>
-              <span>&gt; deploy status: active [99.9%]</span>
+              <span>&gt; git push origin main</span>
+              <span>&gt; deploy status: live [100%]</span>
             </div>
           </div>
 
@@ -306,8 +305,8 @@ export function PortfolioContent() {
               <span>DEV ENVIRONMENT</span>
             </div>
             <div className="ambient-stats">
-              <strong>15+ REPOS</strong>
-              <small>JAVA &middot; SPRING &middot; REACT</small>
+              <strong>20+ REPOS</strong>
+              <small>FULL-STACK &middot; SPRING &middot; REACT</small>
             </div>
           </div>
 

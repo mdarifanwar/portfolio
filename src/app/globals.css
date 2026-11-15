@@ -662,6 +662,8 @@ main.content {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 2;
 }
 .kicker-index {
   color: var(--accent);
@@ -970,7 +972,7 @@ main.content {
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
 }
 .ambient-card-1 {
-  top: 14%;
+  top: 20%;
   left: clamp(20px, 4vw, 50px);
   animation: floatAmbient 7s ease-in-out infinite alternate;
 }

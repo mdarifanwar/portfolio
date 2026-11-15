@@ -160,9 +160,9 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
-  { group: "Languages", items: ["Java", "C#", "Python", "JavaScript", "TypeScript"] },
-  { group: "Frontend", items: ["React", "Next.js", "HTML", "CSS", "Tailwind CSS"] },
-  { group: "Backend", items: ["Spring Boot", "ASP.NET Core", "Node.js", "Express", "REST APIs", "JWT"] },
-  { group: "Databases", items: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"] },
-  { group: "Tools & Practices", items: ["Git", "GitHub", "Maven", "JUnit 5", "xUnit", "Docker", "Postman", "CI/CD", "OOP", "DSA"] },
+  { group: "Languages", items: ["Java", "C#", "TypeScript", "JavaScript", "Python", "SQL"] },
+  { group: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "HTML5 & CSS3", "Socket.io", "WebRTC"] },
+  { group: "Backend", items: ["ASP.NET Core", "Spring Boot", "Node.js", "Express.js", "REST APIs", "JWT & RBAC", "EF Core"] },
+  { group: "Databases", items: ["PostgreSQL", "MySQL", "SQL Server", "SQLite", "MongoDB"] },
+  { group: "Tools & DevOps", items: ["Docker", "GitHub Actions", "CI/CD", "Oracle Cloud (OCI)", "AWS", "Postman", "xUnit & JUnit", "LeetCode (190+)"] },
 ];
