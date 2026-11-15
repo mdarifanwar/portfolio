@@ -10,25 +10,48 @@ import { LiveClock } from "@/components/LiveClock";
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
 
-    const subject = encodeURIComponent(`Portfolio Message from ${name.trim()}`);
-    const bodyContent = `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`;
-    const encodedBody = encodeURIComponent(bodyContent);
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          Name: name.trim(),
+          Email: email.trim(),
+          Phone: phone.trim() || "Not provided",
+          Message: message.trim(),
+          _subject: `New Portfolio Inquiry from ${name.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
 
-    // Direct redirect to Gmail in the SAME tab (not a new tab)
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${site.email}&su=${subject}&body=${encodedBody}`;
+      if (!response.ok) {
+        throw new Error("Submission response was not ok");
+      }
 
-    setTimeout(() => {
-      window.location.href = gmailUrl;
-    }, 800);
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError("Unable to submit directly right now. Please click here to email me directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,13 +107,42 @@ export default function ContactPage() {
                 className="contact-form-success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
+                style={{ textAlign: "center", padding: "40px 20px" }}
               >
-                <CheckCircle2 size={44} className="success-icon" />
-                <h2>Opening Gmail...</h2>
-                <p>Your message has been prepared for {site.email}.</p>
+                <CheckCircle2 size={48} className="success-icon" style={{ color: "var(--accent)", margin: "0 auto 16px" }} />
+                <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "8px" }}>Message Sent Successfully!</h2>
+                <p style={{ color: "var(--muted)", maxWidth: "460px", margin: "0 auto 24px", lineHeight: "1.6" }}>
+                  Thank you, <strong>{name}</strong>. Your message was delivered directly to <strong>{site.email}</strong>. I will get back to you shortly at <strong>{email}</strong>.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setName("");
+                    setEmail("");
+                    setPhone("");
+                    setMessage("");
+                    setSubmitted(false);
+                  }}
+                  className="contact-dark-submit"
+                  style={{ display: "inline-block", width: "auto", padding: "12px 28px" }}
+                >
+                  <span>Send Another Message</span>
+                </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-actual-form">
+                {error && (
+                  <div style={{ padding: "12px 16px", borderRadius: "8px", background: "rgba(239, 68, 68, 0.12)", border: "1px solid rgba(239, 68, 68, 0.3)", color: "#f87171", fontSize: "13px", marginBottom: "16px" }}>
+                    {error}{" "}
+                    <a 
+                      href={`mailto:${site.email}?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nPhone: ${phone}\n\n${message}`)}`}
+                      style={{ textDecoration: "underline", fontWeight: "600", color: "#fff" }}
+                    >
+                      Click here to email directly
+                    </a>
+                  </div>
+                )}
+
                 <div className="contact-field-wrap">
                   <input
                     type="text"
@@ -114,6 +166,16 @@ export default function ContactPage() {
                 </div>
 
                 <div className="contact-field-wrap">
+                  <input
+                    type="tel"
+                    placeholder="Phone Number (Optional)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="contact-dark-input"
+                  />
+                </div>
+
+                <div className="contact-field-wrap">
                   <textarea
                     required
                     rows={5}
@@ -124,8 +186,8 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button type="submit" className="contact-dark-submit">
-                  <span>Submit Now</span>
+                <button type="submit" disabled={loading} className="contact-dark-submit">
+                  <span>{loading ? "Sending Directly to Gmail..." : "Submit Now"}</span>
                 </button>
               </form>
             )}

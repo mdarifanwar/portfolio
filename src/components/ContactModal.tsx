@@ -10,13 +10,22 @@ export function ContactModal() {
   const { isOpen, closeContact } = useContactModal();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Close on Escape key & lock scroll when open
   useEffect(() => {
     if (!isOpen) {
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
       setSubmitted(false);
+      setError(null);
+      setLoading(false);
       return;
     }
 
@@ -33,35 +42,45 @@ export function ContactModal() {
     };
   }, [isOpen, closeContact]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
-    // Compose Gmail & Mailto targets directly to mdarifansari.dev@gmail.com
-    const subject = encodeURIComponent(`Portfolio Message from ${name.trim()}`);
-    const bodyContent = `Name: ${name.trim()}\nEmail: ${email.trim()}\n\nMessage:\n${message.trim()}`;
-    const encodedBody = encodeURIComponent(bodyContent);
+    setLoading(true);
+    setError(null);
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${site.email}&su=${subject}&body=${encodedBody}`;
-    const mailtoUrl = `mailto:${site.email}?subject=${subject}&body=${encodedBody}`;
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          Name: name.trim(),
+          Email: email.trim(),
+          Phone: phone.trim() || "Not provided",
+          Message: message.trim(),
+          _subject: `New Portfolio Inquiry from ${name.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
 
-    setSubmitted(true);
+      if (!response.ok) {
+        throw new Error("Submission response failed");
+      }
 
-    // Open Gmail directly in a new tab
-    const newWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
-      // Fallback to mailto if popup blocked
-      window.location.href = mailtoUrl;
+      setSubmitted(true);
+      setTimeout(() => {
+        closeContact();
+      }, 2600);
+    } catch (err) {
+      console.error("Modal submission error:", err);
+      setError("Unable to submit directly. Please try again or email directly.");
+    } finally {
+      setLoading(false);
     }
-
-    // Reset and close after a short delay
-    setTimeout(() => {
-      setName("");
-      setEmail("");
-      setMessage("");
-      setSubmitted(false);
-      closeContact();
-    }, 2400);
   };
 
   return (
@@ -111,13 +130,22 @@ export function ContactModal() {
                 className="contact-modal-success"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
+                style={{ textAlign: "center", padding: "20px 0" }}
               >
-                <CheckCircle2 size={42} className="success-icon" />
-                <h3>Opening Gmail...</h3>
-                <p>Your message has been prepared for {site.email}.</p>
+                <CheckCircle2 size={44} className="success-icon" style={{ color: "var(--accent)", margin: "0 auto 12px" }} />
+                <h3 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "6px" }}>Message Sent Successfully!</h3>
+                <p style={{ color: "var(--muted)", fontSize: "14px", lineHeight: "1.5" }}>
+                  Your message has been sent directly to <strong>{site.email}</strong>.
+                </p>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-modal-form">
+                {error && (
+                  <div style={{ padding: "8px 12px", borderRadius: "6px", background: "rgba(239, 68, 68, 0.12)", color: "#f87171", fontSize: "12px", marginBottom: "12px" }}>
+                    {error}
+                  </div>
+                )}
+
                 <div className="form-group">
                   <input
                     type="text"
@@ -141,6 +169,16 @@ export function ContactModal() {
                 </div>
 
                 <div className="form-group">
+                  <input
+                    type="tel"
+                    placeholder="Phone Number (Optional)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="form-input"
+                  />
+                </div>
+
+                <div className="form-group">
                   <textarea
                     required
                     rows={4}
@@ -151,8 +189,8 @@ export function ContactModal() {
                   />
                 </div>
 
-                <button type="submit" className="form-submit-btn">
-                  <span>Submit Now</span>
+                <button type="submit" disabled={loading} className="form-submit-btn">
+                  <span>{loading ? "Sending Directly to Gmail..." : "Submit Now"}</span>
                 </button>
               </form>
             )}
