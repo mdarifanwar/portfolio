@@ -437,9 +437,6 @@ export function PortfolioContent() {
             <span className="contact-badge-item">
               📍 BENGALURU, INDIA
             </span>
-            <span className="contact-badge-item">
-              🎓 CLASS OF 2027
-            </span>
           </div>
         </div>
       </section>
@@ -448,7 +445,7 @@ export function PortfolioContent() {
       <footer className="aathif-footer">
         <div className="footer-top-row">
           <p className="footer-bio-lead">
-            BASED IN INDIA, BENGALURU, I AM AN INNOVATIVE SOFTWARE ENGINEER. MY PASSION FOR BUILDING SCALABLE APPLICATIONS, CLEAN SYSTEM ARCHITECTURE, AND INTUITIVE DIGITAL EXPERIENCES IS EVIDENT IN MY WORK.
+            BASED IN BENGALURU, INDIA, I AM A SOFTWARE ENGINEER AND FINAL-YEAR CS UNDERGRADUATE (CLASS OF 2027). PASSIONATE ABOUT SYSTEM ARCHITECTURE, SCALABLE APIS, AND CLEAN CODE, I BUILD PRODUCTION-READY APPLICATIONS DESIGNED FOR REAL-WORLD IMPACT.
           </p>
         </div>
 
