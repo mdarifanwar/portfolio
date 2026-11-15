@@ -676,23 +676,29 @@ main.content {
 
 /* 01 // Approach Section */
 .approach-intro {
-  max-width: 980px;
-  margin-bottom: 60px;
+  max-width: 920px;
+  margin: 20px auto 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .approach-big-title {
   margin: 0 0 20px;
   font-size: clamp(34px, 5.2vw, 70px);
   font-weight: 750;
-  line-height: 1.05;
+  line-height: 1.08;
   letter-spacing: -0.04em;
   color: var(--text);
+  text-align: center;
 }
 .approach-sub-text {
-  margin: 0;
+  margin: 0 auto;
   font-size: clamp(15px, 1.4vw, 19px);
   line-height: 1.7;
   color: var(--muted);
   max-width: 640px;
+  text-align: center;
 }
 .approach-phases-grid {
   display: grid;
@@ -1936,15 +1942,19 @@ html.light .footer-massive-name span,
     flex-wrap: wrap;
   }
   .approach-intro {
-    margin-bottom: 34px;
+    margin: 10px auto 34px;
+    text-align: center;
   }
   .approach-big-title {
     font-size: clamp(26px, 7vw, 38px);
     margin-bottom: 14px;
+    text-align: center;
   }
   .approach-sub-text {
     font-size: 14px;
     line-height: 1.6;
+    text-align: center;
+    margin: 0 auto;
   }
   .phase-card {
     padding: 22px 18px;

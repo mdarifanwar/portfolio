@@ -116,13 +116,13 @@ export function PortfolioContent() {
         <div className="approach-intro">
           {/* Animated Text Reveal for Big Title */}
           <TextReveal 
-            text="TRANSFORMING COMPLEX PROBLEMS INTO SCALABLE, RESILIENT SOFTWARE."
+            text="I'M MD ARIF ANSARI BASED IN BENGALURU, INDIA."
             as="h2"
             className="approach-big-title"
-            stagger={0.03}
+            stagger={0.035}
           />
           <TextReveal
-            text="Based in Bengaluru, I architect high-performance full-stack web applications and robust backend systems engineered for reliability, speed, and real-world impact."
+            text="I employ software engineering skills to build scalable, high-performance, and reliable applications."
             as="p"
             className="approach-sub-text"
             delay={0.2}
@@ -147,9 +147,9 @@ export function PortfolioContent() {
               </div>
               <span className="phase-number">01</span>
             </div>
-            <h3 className="phase-title">DISCOVER AND ANALYSE</h3>
+            <h3 className="phase-title">DISCOVER & ANALYZE</h3>
             <p className="phase-desc">
-              Deconstruct problem spaces, understand requirements, evaluate algorithmic complexity, and architect clean roadmap strategies.
+              Deep dive into problem spaces, understand requirements, evaluate algorithmic trade-offs, and architect clean technical roadmaps.
             </p>
             <div className="phase-tags">
               <span>System Design</span>
@@ -167,14 +167,14 @@ export function PortfolioContent() {
               </div>
               <span className="phase-number">02</span>
             </div>
-            <h3 className="phase-title">DESIGN AND IMPLEMENT</h3>
+            <h3 className="phase-title">DESIGN & BUILD</h3>
             <p className="phase-desc">
-              Engineer modular backend microservices with Java & Spring Boot, design normalized databases, and craft responsive React frontends.
+              Architect modular backend microservices, design normalized databases, and craft responsive, fluid frontends with clean code.
             </p>
             <div className="phase-tags">
-              <span>Spring Boot</span>
-              <span>React & Next.js</span>
-              <span>REST APIs</span>
+              <span>Full-Stack APIs</span>
+              <span>Clean Code</span>
+              <span>Microservices</span>
             </div>
           </motion.div>
 
@@ -187,14 +187,14 @@ export function PortfolioContent() {
               </div>
               <span className="phase-number">03</span>
             </div>
-            <h3 className="phase-title">DELIVER AND MONITOR</h3>
+            <h3 className="phase-title">DEPLOY & SCALE</h3>
             <p className="phase-desc">
-              Containerize services with Docker, optimize database queries for low latency, automate CI/CD testing, and ensure 99.9% reliability.
+              Containerize services with Docker, automate CI/CD delivery pipelines, tune database queries for low latency, and ensure high availability.
             </p>
             <div className="phase-tags">
               <span>Docker & CI/CD</span>
-              <span>SQL Tuning</span>
-              <span>Monitoring</span>
+              <span>Performance Tuning</span>
+              <span>Cloud & Ops</span>
             </div>
           </motion.div>
         </motion.div>
@@ -339,11 +339,11 @@ export function PortfolioContent() {
             variants={staggerContainer}
           >
             <motion.div variants={reveal} className="stat-pillar">
-              <span className="stat-number">3+</span>
-              <span className="stat-label">YEARS DEV EXPERIENCE</span>
+              <span className="stat-number">2027</span>
+              <span className="stat-label">B.TECH GRADUATION</span>
             </motion.div>
             <motion.div variants={reveal} className="stat-pillar">
-              <span className="stat-number">15+</span>
+              <span className="stat-number">20+</span>
               <span className="stat-label">PROJECTS & REPOSITORIES</span>
             </motion.div>
             <motion.div variants={reveal} className="stat-pillar">

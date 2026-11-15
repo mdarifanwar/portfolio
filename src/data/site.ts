@@ -13,5 +13,5 @@ export const site = {
   intro:
     "I build thoughtful digital products, reliable backend systems, and clean user experiences.",
   about:
-    "I’m a Computer Science and Engineering student focused on full-stack development and building practical software. I enjoy turning ideas into useful products, learning how systems work end to end, and improving through consistent problem-solving.",
+    "I’m a final-year Computer Science and Engineering student (graduating in 2027) focused on full-stack development and building practical, high-performance software. I enjoy turning ideas into useful products, learning how systems work end to end, and improving through consistent problem-solving.",
 };
