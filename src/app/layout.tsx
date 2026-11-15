@@ -44,15 +44,34 @@ const caveat = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Md Arif Ansari | Software Engineer",
-  description: "Portfolio of Md Arif Ansari, a computer science student and software developer focused on full-stack development.",
-  keywords: ["Md Arif Ansari", "Software Engineer", "Full Stack Developer", "Java", "React", "Spring Boot"],
-  authors: [{ name: "Md Arif Ansari" }],
+  title: "Md Arif Ansari · Software Engineer & Full-Stack Developer",
+  description: "Software Engineer specializing in scalable full-stack web applications, distributed APIs, and clean system architecture. Available for global remote & on-site engineering opportunities.",
+  keywords: [
+    "Md Arif Ansari",
+    "Software Engineer",
+    "Full Stack Developer",
+    "ASP.NET Core",
+    "Spring Boot",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Docker",
+    "Distributed Systems",
+    "Bengaluru",
+    "Global Remote"
+  ],
+  authors: [{ name: "Md Arif Ansari", url: "https://github.com/mdarifanwar" }],
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Md Arif Ansari | Software Engineer",
-    description: "Building useful digital experiences.",
+    title: "Md Arif Ansari · Software Engineer & Full-Stack Developer",
+    description: "Building scalable distributed systems, robust APIs, and modern digital experiences.",
     type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Md Arif Ansari · Software Engineer",
+    description: "Building scalable distributed systems, robust APIs, and modern digital experiences.",
   },
 };
 

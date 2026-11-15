@@ -8,9 +8,10 @@ import { ArrowUpRight } from "lucide-react";
 import { LiveClock } from "./LiveClock";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about", external: false },
+  { label: "Skills", href: "#skills", external: false },
+  { label: "Projects", href: "#projects", external: false },
+  { label: "Resume", href: "/resume.pdf", external: true },
 ];
 
 function BubbleDots({ isOpen }: { isOpen: boolean }) {
@@ -136,6 +137,8 @@ export function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noreferrer" : undefined}
                     onClick={closeAll}
                     onMouseEnter={() => setHoveredKey(link.href)}
                     className="pill-nav-item"
@@ -214,7 +217,13 @@ export function Navbar() {
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
               {links.map((link) => (
-                <a key={link.href} href={link.href} onClick={closeAll}>
+                <a 
+                  key={link.href} 
+                  href={link.href} 
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noreferrer" : undefined}
+                  onClick={closeAll}
+                >
                   {link.label}
                 </a>
               ))}

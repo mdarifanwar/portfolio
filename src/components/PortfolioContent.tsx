@@ -323,7 +323,7 @@ export function PortfolioContent() {
         <div className="philosophy-center">
           {/* Animated Reveal for Philosophy Statement */}
           <TextReveal
-            text="AN INDIA–BASED SOFTWARE ENGINEER, SPECIALIZING IN HELPING BUSINESSES AND INDIVIDUALS TURN THEIR AMBITIOUS IDEAS INTO IMPACTFUL DIGITAL PRODUCTS AND SOFTWARE SOLUTIONS."
+            text="A SOFTWARE ENGINEER DRIVEN BY SYSTEM DESIGN, SCALABILITY, AND CLEAN ARCHITECTURE — CRAFTING HIGH-PERFORMANCE DIGITAL PRODUCTS AND ROBUST SERVICES BUILT TO SCALE GLOBALLY."
             as="blockquote"
             className="philosophy-quote"
             stagger={0.03}
@@ -447,6 +447,24 @@ export function PortfolioContent() {
           <p className="footer-bio-lead">
             BASED IN BENGALURU, INDIA, I AM A SOFTWARE ENGINEER AND FINAL-YEAR CS UNDERGRADUATE (CLASS OF 2027). PASSIONATE ABOUT SYSTEM ARCHITECTURE, SCALABLE APIS, AND CLEAN CODE, I BUILD PRODUCTION-READY APPLICATIONS DESIGNED FOR REAL-WORLD IMPACT.
           </p>
+          <div className="footer-social-links">
+            <a href={site.linkedin} target="_blank" rel="noreferrer">
+              <span>LINKEDIN</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <a href={site.github} target="_blank" rel="noreferrer">
+              <span>GITHUB</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <a href="/resume.pdf" target="_blank" rel="noreferrer">
+              <span>RESUME</span>
+              <ArrowUpRight size={13} />
+            </a>
+            <Link href="/contact">
+              <span>CONTACT</span>
+              <ArrowUpRight size={13} />
+            </Link>
+          </div>
         </div>
 
         {/* Massive Name Typography across the base */}
