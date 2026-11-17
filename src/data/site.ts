@@ -4,11 +4,11 @@ export const site = {
   role: "Software Engineer · Full-Stack Developer",
   location: "India, Bengaluru",
   email: "mdarifansari.dev@gmail.com",
-  phone: "+91 9852115086",
+  phone: "+91 9204726733",
   phoneCountry: "IN",
   linkedin: "https://www.linkedin.com/in/md-arif1",
   github: "https://github.com/mdarifanwar",
-  leetcode: "https://leetcode.com/",
+  leetcode: "https://leetcode.com/u/mdarifa/",
   resume: "/resume.pdf",
   intro:
     "I build thoughtful digital products, reliable backend systems, and clean user experiences.",
