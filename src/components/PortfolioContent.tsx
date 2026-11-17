@@ -464,7 +464,7 @@ export function PortfolioContent() {
               <span>GITHUB</span>
               <ArrowUpRight size={13} />
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noreferrer">
+            <a href={site.resume} target="_blank" rel="noreferrer" download="Md Arif.pdf">
               <span>RESUME</span>
               <ArrowUpRight size={13} />
             </a>

@@ -9,7 +9,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/md-arif1",
   github: "https://github.com/mdarifanwar",
   leetcode: "https://leetcode.com/u/mdarifa/",
-  resume: "/resume.pdf",
+  resume: "/Md%20Arif.pdf",
   intro:
     "I build thoughtful digital products, reliable backend systems, and clean user experiences.",
   about:

@@ -6,12 +6,13 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { LiveClock } from "./LiveClock";
+import { site } from "@/data/site";
 
-const links = [
+const links: { label: string; href: string; external: boolean; download?: string }[] = [
   { label: "About", href: "#about", external: false },
   { label: "Skills", href: "#skills", external: false },
   { label: "Projects", href: "#projects", external: false },
-  { label: "Resume", href: "/resume.pdf", external: true },
+  { label: "Resume", href: site.resume, external: true, download: "Md Arif.pdf" },
 ];
 
 function BubbleDots({ isOpen }: { isOpen: boolean }) {
@@ -139,6 +140,7 @@ export function Navbar() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noreferrer" : undefined}
+                    download={link.download}
                     onClick={closeAll}
                     onMouseEnter={() => setHoveredKey(link.href)}
                     className="pill-nav-item"
@@ -222,6 +224,7 @@ export function Navbar() {
                   href={link.href} 
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noreferrer" : undefined}
+                  download={link.download}
                   onClick={closeAll}
                 >
                   {link.label}
