@@ -126,22 +126,7 @@ export function Navbar() {
           transition={{ type: "spring", stiffness: 380, damping: 30, mass: 0.55 }}
         >
           <a href="#top" className="pill-logo" aria-label="Md Arif Ansari home" onClick={closeAll}>
-            <span className="pill-logo-icon" aria-hidden="true">
-              <svg viewBox="0 0 100 100" width="20" height="20" fill="none">
-                <defs>
-                  <linearGradient id="nav-ma-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#5eead4" />
-                    <stop offset="100%" stopColor="#0d9488" />
-                  </linearGradient>
-                </defs>
-                <rect width="98" height="98" x="1" y="1" rx="22" fill="#090c10" stroke="rgba(94, 234, 212, 0.4)" strokeWidth="4" />
-                <path d="M 18 80 L 18 24 L 30 24 L 46 54 L 38 67 L 28 48 L 28 80 Z" fill="url(#nav-ma-grad)" />
-                <path d="M 82 80 L 82 24 L 70 24 L 54 54 L 62 67 L 72 48 L 72 80 Z" fill="url(#nav-ma-grad)" />
-                <polygon points="50,16 34,68 44,68 50,46 56,46 62,68 72,68" fill="url(#nav-ma-grad)" />
-                <rect x="33" y="55" width="34" height="6" rx="3" fill="#5eead4" />
-              </svg>
-            </span>
-            <span>arif<span className="pill-logo-dot">.</span></span>
+            arif<span className="pill-logo-dot">.</span>
           </a>
 
           {/* When at top: show desktop links */}
