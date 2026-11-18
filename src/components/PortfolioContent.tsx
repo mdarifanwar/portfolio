@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { 
@@ -42,6 +43,12 @@ const staggerContainer: Variants = {
 };
 
 export function PortfolioContent() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && !window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <main className="content aathif-theme">
       {/* Subtle Architectural Grid Lines */}

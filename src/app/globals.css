@@ -202,18 +202,18 @@ nextjs-portal,
   height: 52px;
   padding: 6px 8px 6px 20px;
   border-radius: 9999px;
-  background: rgba(13, 17, 23, 0.78);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(13, 17, 23, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--line);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.25);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
 .light .pill-navbar {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(16, 40, 36, 0.12);
-  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(16, 40, 36, 0.14);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 .pill-logo {
   display: inline-flex;
@@ -651,24 +651,24 @@ main.content {
   z-index: 10;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 30px clamp(20px, 5vw, 60px) 70px;
+  padding: 24px clamp(20px, 5vw, 60px) 50px;
 }
 .hero-headline-wrap {
   text-align: center;
-  padding: 16px 0 44px;
+  padding: 10px 0 24px;
   overflow: visible;
 }
 .hero-massive-name {
   margin: 0;
-  font-size: clamp(48px, 17.5vw, 275px);
+  font-size: clamp(48px, 12.5vw, 160px);
   font-weight: 900;
-  line-height: 0.88;
+  line-height: 0.92;
   letter-spacing: -0.055em;
   color: #ffffff;
   text-transform: uppercase;
   user-select: none;
   will-change: transform, opacity;
-  padding: 12px 0 0;
+  padding: 6px 0 0;
 }
 .light .hero-massive-name {
   color: #000000 !important;
@@ -680,17 +680,22 @@ main.content {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   border-top: 1px solid var(--line);
-  padding-top: 36px;
+  padding-top: 28px;
 }
 .meta-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px 22px;
+  padding: 16px 20px;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 16px;
   background: var(--surface);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.light .meta-card {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
 }
 .meta-card:hover {
   border-color: var(--accent);
@@ -713,6 +718,11 @@ main.content {
   background: rgba(255, 255, 255, 0.08);
   color: var(--text);
   border: 1px solid var(--line);
+}
+.light .meta-icon-badge.white {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.14);
 }
 .meta-icon-badge.blue {
   background: rgba(59, 130, 246, 0.12);
