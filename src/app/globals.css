@@ -1970,7 +1970,7 @@ html.light .footer-massive-name span,
     padding: 0 24px;
   }
   .pill-side-item {
-    display: none !important;
+    display: flex;
   }
   .aathif-section {
     padding: 90px 24px 36px;
@@ -2058,15 +2058,46 @@ html.light .footer-massive-name span,
     grid-template-columns: repeat(2, 1fr);
   }
   .aathif-top-divider {
-    height: 68px;
+    height: 72px;
   }
   .pill-navbar-container {
     top: 10px;
     padding: 0 16px;
   }
+  .pill-top-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pill-side-item {
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    pointer-events: none;
+  }
+  .pill-side-left {
+    justify-content: flex-start;
+  }
+  .pill-side-right {
+    justify-content: flex-end;
+  }
+  .mono-time {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+  .top-contact-pill {
+    height: 36px;
+    padding: 0 12px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    gap: 5px;
+  }
   .pill-navbar {
     height: 44px;
     padding: 4px 6px 4px 14px;
+    flex-shrink: 0;
   }
   .pill-logo {
     font-size: 16px;
@@ -2288,6 +2319,16 @@ html.light .footer-massive-name span,
 
 /* 4. Ultra-Compact Mobile Screens (<= 380px) */
 @media (max-width: 380px) {
+  .mono-time {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+  .top-contact-pill {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 9px;
+    gap: 3px;
+  }
   .pill-navbar {
     padding: 4px 6px 4px 10px;
   }
