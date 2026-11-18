@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <!-- Plain Circle Background -->
-  <circle cx="50" cy="50" r="47" fill="#090c10" stroke="#2dd4bf" stroke-width="3" />
+  <!-- Pure Black Circle Background (No border) -->
+  <circle cx="50" cy="50" r="50" fill="#000000" />
 
-  <!-- Normal clean AM text -->
+  <!-- Normal Clean 'MA' Text -->
   <text
     x="50"
     y="52"
@@ -11,7 +11,7 @@
     fill="#5eead4"
     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
     font-size="46"
-    font-weight="700"
+    font-weight="800"
     letter-spacing="1px"
-  >AM</text>
+  >MA</text>
 </svg>
