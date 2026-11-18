@@ -61,7 +61,11 @@ export const metadata: Metadata = {
     "Global Remote"
   ],
   authors: [{ name: "Md Arif Ansari", url: "https://github.com/mdarifanwar" }],
-  icons: { icon: "/favicon.svg" },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Md Arif Ansari · Software Engineer & Full-Stack Developer",
     description: "Building scalable distributed systems, robust APIs, and modern digital experiences.",
